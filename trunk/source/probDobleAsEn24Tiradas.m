@@ -1,5 +1,5 @@
 function y = probDobleAsEn24Tiradas(n)
-	cantTiradasEnLasQueSalioAs = 0;
+	cantExperienciasEnLasQueSalioAs = 0;
 	for i = 1:n
 		salioDobleAs = false;
 		d1 = randomDado(24);
@@ -9,9 +9,9 @@ function y = probDobleAsEn24Tiradas(n)
 				salioDobleAs = true;
 			endif	
 		endfor
-		if (salioAs)
-			cantTiradasEnLasQueSalioDobleAs = cantTiradasEnLasQueSalioDobleAs + 1;
+		if (salioDobleAs)
+			cantExperienciasEnLasQueSalioAs = cantExperienciasEnLasQueSalioAs + 1;
 		endif
 	endfor	
-	y = cantTiradasEnLasQueSalioAs/n;
+	y = cantExperienciasEnLasQueSalioAs/n;
 endfunction
