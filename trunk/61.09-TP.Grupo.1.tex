@@ -30,10 +30,10 @@
 
 % Definición de preferencias para la impresión de código fuente.
 %% Colores
-\definecolor{gray98}{gray}{.98}
-\definecolor{gray90}{gray}{.90}
+\definecolor{gray99}{gray}{.99}
+\definecolor{gray95}{gray}{.95}
 \definecolor{gray75}{gray}{.75}
-\definecolor{gray30}{gray}{.30}
+\definecolor{gray50}{gray}{.50}
 \definecolor{keywords_blue}{rgb}{0.13,0.13,1}
 \definecolor{comments_green}{rgb}{0,0.5,0}
 \definecolor{strings_red}{rgb}{0.9,0,0}
@@ -42,7 +42,7 @@
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFont{style_labelfont}{\color{black}\textbf}
 \DeclareCaptionFont{style_textfont}{\it\color{black}}
-\DeclareCaptionFormat{listing}{\colorbox{gray90}{\parbox{16.78cm}{#1#2#3}}}
+\DeclareCaptionFormat{listing}{\colorbox{gray95}{\parbox{16.78cm}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=style_labelfont,textfont=style_textfont}
 % Titulo de las cajas de código
 \renewcommand{\lstlistingname}{Código}
@@ -50,35 +50,32 @@
 \newcommand{\refcode}[1]{\textit{Código \ref{#1}}}
 
 \lstset{
-	language = Octave,                
-	basicstyle = \footnotesize,       
-	numbers = left,                   
-	numberstyle = \tiny\ttfamily\color{gray30},  
-	stepnumber = 1,                    
-	numbersep = 5pt,                 
-	tabsize = 2,
-	backgroundcolor = \color{gray98}, 
-	showspaces = false,               
-	showstringspaces = false,         
-	showtabs = false,                 
-	frame = lines,                   
-	rulecolor = \color{gray75},
-	tabsize = 2,                      
-	captionpos = t,                   
-	breaklines = true,                
-	breakatwhitespace = true,        
-	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-	breakatwhitespace = false,
 	aboveskip = {1.5\baselineskip},
-	columns = fixed,
-	upquote = true,
-	extendedchars = true,
-	title = \null, % Default value: title=\lstname;                            
-	keywordstyle = \color{keywords_blue}\bfseries,
-	commentstyle = \color{comments_green},  
-	stringstyle = \color{strings_red},     
+	backgroundcolor = \color{gray99},
 	basicstyle = \ttfamily\footnotesize,
-	escapeinside = {\%*}{*)},         
+	breakatwhitespace = true,   
+	breaklines = true,
+	captionpos = t,
+	columns = fixed,
+	commentstyle = \color{comments_green},
+	escapeinside = {\%*}{*)}, 
+	extendedchars = true,
+	frame = lines,
+	keywordstyle = \color{keywords_blue}\bfseries,
+	language = Octave,                       
+	numbers = left,
+	numbersep = 5pt,
+	numberstyle = \tiny\ttfamily\color{gray50},
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	rulecolor = \color{gray75},
+	showspaces = false,
+	showstringspaces = false, 
+	showtabs = false,
+	stepnumber = 1,
+	stringstyle = \color{strings_red},                                    
+	tabsize = 2,
+	title = \null, % Default value: title=\lstname
+	upquote = true,                  
 }
 
 
@@ -127,6 +124,8 @@ Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabil
 
 A veces se necesita estimar la probabilidad de un evento definido a partir de variables aleatorias. [ Colocar contenido aquí ]
 
+% Código
+\lstinputlisting[label=code:punto2,caption=probDobleDelOtro.m]{source/probDobleDelOtro.m}
 
 % ACTIVIDADES PREVIAS - Enigma final
 \subsection{Enigma final}
@@ -139,7 +138,11 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 
 \noindent [ Colocar contenido aquí ]
 
+% Código
+\lstinputlisting[label=code:punto4.1,caption=probDobleAsEn24Tiradas.m]{source/probDobleAsEn24Tiradas.m}
 
+% Código
+\lstinputlisting[label=code:punto4.2,caption=probDobleAs.m]{source/probDobleAs.m}
 
 % ACTIVIDAD PRINCIPAL
 \section{Actividad principal}
