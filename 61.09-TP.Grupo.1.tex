@@ -27,60 +27,59 @@
 
 %% Fin PAQUETES
 
+
 % Definición de preferencias para la impresión de código fuente.
 %% Colores
-\definecolor{gray97}{gray}{.97}
-\definecolor{gray85}{gray}{.85}
+\definecolor{gray98}{gray}{.98}
+\definecolor{gray90}{gray}{.90}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray30}{gray}{.30}
-\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
-\definecolor{greencomments}{rgb}{0,0.5,0}
-\definecolor{redstrings}{rgb}{0.9,0,0}
+\definecolor{keywords_blue}{rgb}{0.13,0.13,1}
+\definecolor{comments_green}{rgb}{0,0.5,0}
+\definecolor{strings_red}{rgb}{0.9,0,0}
 
 %% Caja de código
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFont{style_labelfont}{\color{black}\textbf}
 \DeclareCaptionFont{style_textfont}{\it\color{black}}
-\DeclareCaptionFormat{listing}{\colorbox{gray85}{\parbox{16.78cm}{#1#2#3}}}
+\DeclareCaptionFormat{listing}{\colorbox{gray90}{\parbox{16.78cm}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=style_labelfont,textfont=style_textfont}
 % Titulo de las cajas de código
 \renewcommand{\lstlistingname}{Código}
 % Referencia a los códigos
 \newcommand{\refcode}[1]{\textit{Código \ref{#1}}}
 
-\lstset{ %
-  language = Octave,                
-  basicstyle = \footnotesize,       
-  numbers = left,                   
-  numberstyle = \tiny\ttfamily\color{gray30},  
-  stepnumber = 1,                    
-  numbersep = 5pt,                 
-  tabsize = 2,
-  backgroundcolor = \color{gray97}, 
-  showspaces = false,               
-  showstringspaces = false,         
-  showtabs = false,                 
-  frame = lines,                   
-  rulecolor = \color{gray75},
-  tabsize = 2,                      
-  captionpos = t,                   
-  breaklines = true,                
-  breakatwhitespace = true,        
-  prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-  breakatwhitespace = false,
-  aboveskip = {1.5\baselineskip},
-  columns = fixed,
-  upquote = true,
-  extendedchars = true,
-  title = \null,                    % Default value: title=\lstname;                            
-  keywordstyle = \color{bluekeywords}\bfseries,
-  commentstyle = \color{greencomments},  
-  stringstyle = \color{redstrings},     
-  basicstyle = \ttfamily\footnotesize,
-  escapeinside = {\%*}{*)},         
+\lstset{
+	language = Octave,                
+	basicstyle = \footnotesize,       
+	numbers = left,                   
+	numberstyle = \tiny\ttfamily\color{gray30},  
+	stepnumber = 1,                    
+	numbersep = 5pt,                 
+	tabsize = 2,
+	backgroundcolor = \color{gray98}, 
+	showspaces = false,               
+	showstringspaces = false,         
+	showtabs = false,                 
+	frame = lines,                   
+	rulecolor = \color{gray75},
+	tabsize = 2,                      
+	captionpos = t,                   
+	breaklines = true,                
+	breakatwhitespace = true,        
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace = false,
+	aboveskip = {1.5\baselineskip},
+	columns = fixed,
+	upquote = true,
+	extendedchars = true,
+	title = \null, % Default value: title=\lstname;                            
+	keywordstyle = \color{keywords_blue}\bfseries,
+	commentstyle = \color{comments_green},  
+	stringstyle = \color{strings_red},     
+	basicstyle = \ttfamily\footnotesize,
+	escapeinside = {\%*}{*)},         
 }
-
-
 
 
 \begin{document}
@@ -89,14 +88,17 @@
 \title{\huge 61.09 Probabilidad y Estadística \\ 
 	  \Huge Trabajo Práctico de Simulación \\
 	  \bigskip \Large 13 de mayo de 2012 \\
-	  \bigskip \large \textit{Loiza, Samanta (91935)\\Aguilera, Juan Martín (92483)\\Rossi, Federico Martín (92086)}}
+	  \bigskip \large \textbf{Grupo 1} \\
+	  \large \textit{Loiza, Samanta (91935)\\Aguilera, Juan Martín (92483)\\Rossi, Federico Martín (92086)}}
 \date{}
 \maketitle
 
 
 % INTRODUCCIÓN
+
 \section{Introducción}
-[ Colocar contenido aquí ]
+
+	Todos los archivos y códigos fuente aquí mencionados, así como también el presente informe, pueden ser descargados de la sección \textit{Downloads} del repositorio del grupo (\textit{http://code.google.com/p/simulacion-proba2012}).
 
 
 
@@ -142,4 +144,18 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 % ACTIVIDAD PRINCIPAL
 \section{Actividad principal}
 
+	Primeramente analicemos la situación a analizar. Luego de haber escrito una pieza de software, se desea someterlo a una prueba que garantice su funcionamiento para todas las entradas posibles (finitas). Dado que cada ejecución puede ser afectada por los resultados de las anteriores, se descartan los métodos triviales que consistan en probarlas siguiendo un patrón preestablecido.
+	Atendiendo a lo anterior, se propone elegir al azar una entrada con la cual realizar la ejecución y repetir el procedimiento hasta que todas hayan sido elegidas al menos una vez. Si por ejemplo, existen 3 entradas posibles, representadas por los dígitos 1, 2 y 3, las secuencias que se muestran a continuación serían válidas:
+
+\begin{itemize}
+\itemsep=2pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=0pt
+	\item 3 2 2 2 3 3 2 2 3 2 2 2 3 2 3 1
+	\item 1 1 2 3
+	\item 1 3 2
+	\item 2 1 2 2 2 2 3
+\end{itemize}
+
+	Es importante remarcar que en cada paso se elige cualquiera sin importar si ya había sido elegida e independientemente de los valores obtenidos anteriormente. Como se puede apreciar, las longitudes de estas secuencias (y por lo tanto, el tiempo y la memoria que consumen) son aleatorias.
+	\par 
+	Habiendonos situado en lo recién expuesto, pasaremos a explorar y analizar las propiedades estadísticas de las secuencias generadas.
 \end{document}
