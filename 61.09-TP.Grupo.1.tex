@@ -112,7 +112,7 @@ Tal como lo sugiere el título de este apartado, se mostrarán a continuación u
 % ACTIVIDADES PREVIAS - Una primera simulación
 \subsection{Una primera simulación}
 
-A continuación, en el \refcode{code:punto1}, se muestra una rutina que a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. .... [ Colocar contenido aquí ]
+A continuación, en el \refcode{code:punto1}, se muestra una rutina que, a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede ver, se ha utilizado la función nativa \textbf{\textit{rand}}, la cual devuelve una matriz (que es utilizada como vector) con valores aleatrios entre 0 y 1. Para ajustarla a nuestras necesidades, o sea, obtener valores aleatorios entre 1 y 6 hemos multiplicado dicho vector por 6. De esta manera pasa a contener valores aleatorios entre 0 y 6. Luego, mediante otra funcion nativa llamada \textbf{\textit{ceil}}, se redondea a los valores enteros próximos superiores de cada uno (ceiling), obteniendo como resultado un vector con valores enteros entre 1 y 6.
 
 % Código
 \lstinputlisting[label=code:punto1,caption=randomDado.m]{source/randomDado.m}
@@ -151,7 +151,7 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 % ACTIVIDAD PRINCIPAL
 \section{Actividad principal}
 
-	Primeramente analicemos la situación a analizar. Luego de haber escrito una pieza de software, se desea someterlo a una prueba que garantice su funcionamiento para todas las entradas posibles (finitas). Dado que cada ejecución puede ser afectada por los resultados de las anteriores, se descartan los métodos triviales que consistan en probarlas siguiendo un patrón preestablecido.
+	Primeramente veamos la situación a analizar. Luego de haber escrito una pieza de software, se desea someterlo a una prueba que garantice su funcionamiento para todas las entradas posibles (finitas). Dado que cada ejecución puede ser afectada por los resultados de las anteriores, se descartan los métodos triviales que consistan en probarlas siguiendo un patrón preestablecido.
 	Atendiendo a lo anterior, se propone elegir al azar una entrada con la cual realizar la ejecución y repetir el procedimiento hasta que todas hayan sido elegidas al menos una vez. Si por ejemplo, existen 3 entradas posibles, representadas por los dígitos 1, 2 y 3, las secuencias que se muestran a continuación serían válidas:
 
 \begin{itemize}
