@@ -1,16 +1,89 @@
 \documentclass{article}
+
+%% PAQUETES
+
+% Paquetes generales
 \usepackage[margin=2cm, paperwidth=210mm, paperheight=297mm]{geometry}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{gensymb}
+
+% Paquetes para estilos
 \usepackage{textcomp}
 \usepackage{setspace}
-\usepackage{amssymb}
 \usepackage{colortbl}
+\usepackage{color}
+\usepackage{color}
+\usepackage{upquote}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{beramono}
 
+
+% Paquetes extras
+\usepackage{amssymb}
+\usepackage{float}
+
+%% Fin PAQUETES
+
+% Definición de preferencias para la impresión de código fuente.
+%% Colores
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray85}{gray}{.85}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray30}{gray}{.30}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+
+%% Caja de código
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFont{style_labelfont}{\color{black}\textbf}
+\DeclareCaptionFont{style_textfont}{\it\color{black}}
+\DeclareCaptionFormat{listing}{\colorbox{gray85}{\parbox{16.78cm}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=style_labelfont,textfont=style_textfont}
+% Titulo de las cajas de código
+\renewcommand{\lstlistingname}{Código}
+% Referencia a los códigos
+\newcommand{\refcode}[1]{\textit{Código \ref{#1}}}
+
+\lstset{ %
+  language = Octave,                
+  basicstyle = \footnotesize,       
+  numbers = left,                   
+  numberstyle = \tiny\ttfamily\color{gray30},  
+  stepnumber = 1,                    
+  numbersep = 5pt,                 
+  tabsize = 2,
+  backgroundcolor = \color{gray97}, 
+  showspaces = false,               
+  showstringspaces = false,         
+  showtabs = false,                 
+  frame = lines,                   
+  rulecolor = \color{gray75},
+  tabsize = 2,                      
+  captionpos = t,                   
+  breaklines = true,                
+  breakatwhitespace = true,        
+  prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+  breakatwhitespace = false,
+  aboveskip = {1.5\baselineskip},
+  columns = fixed,
+  upquote = true,
+  extendedchars = true,
+  title = \null,                    % Default value: title=\lstname;                            
+  keywordstyle = \color{bluekeywords}\bfseries,
+  commentstyle = \color{greencomments},  
+  stringstyle = \color{redstrings},     
+  basicstyle = \ttfamily\footnotesize,
+  escapeinside = {\%*}{*)},         
+}
 
 \begin{document}
 
+% Inserción del título, autores y fecha.
 \title{\huge 61.09 Probabilidad y Estadística \\ 
 	  \Huge Trabajo Práctico de Simulación \\
 	  \bigskip \Large 13 de mayo de 2012 \\
@@ -18,35 +91,40 @@
 \date{}
 \maketitle
 
+
+% INTRODUCCIÓN
 \section{Introducción}
 [ Colocar contenido aquí ]
 
+
+
+% ACTIVIDADES PREVIAS
 \section{Actividades previas}
 
 Tal como lo sugiere el título de este apartado, se mostrarán a continuación una serie de actividades previas necesarias para dominar las técnicas básicas de simulación de números aleatorios.
 
+
+% ACTIVIDADES PREVIAS - Una primera simulación
 \subsection{Una primera simulación}
 
-A continuación, en el \textit{Código 2.1}, se muestra una rutina que a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede observar .... [ Colocar contenido aquí ]
-\bigskip
+A continuación, en el \refcode{code:punto1}, se muestra una rutina que a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede observar .... [ Colocar contenido aquí ]
 
-\begin{tabular*}{16cm}{l}
-	\hline
-	\textbf{Código 2.1} \\
-	\hline \bigskip
-	\texttt{[ Aquí va el código ]} \\
-	\hline
-\end{tabular*}
-\bigskip
+% Código
+\lstinputlisting[label=code:punto1,caption=Punto1.m]{punto1.m}
 
+% ACTIVIDADES PREVIAS - Puesta a prueba
 \subsection{Puesta a prueba}
 
 Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabilidades de cada uno de los 6 valores posibles utilizando los resultados obtenidos en 1000 ejecuciones de la rutina. [ Colocar contenido aquí ]
 
+
+% ACTIVIDADES PREVIAS - Predicados
 \subsection{Predicados}
 
 A veces se necesita estimar la probabilidad de un evento definido a partir de variables aleatorias. [ Colocar contenido aquí ]
 
+
+% ACTIVIDADES PREVIAS - Enigma final
 \subsection{Enigma final}
 
 Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que se hizo a si mismo el Caballero de Méré en el siglo XVII: 
@@ -57,6 +135,9 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 
 \noindent [ Colocar contenido aquí ]
 
+
+
+% ACTIVIDAD PRINCIPAL
 \section{Actividad principal}
 
 \end{document}
