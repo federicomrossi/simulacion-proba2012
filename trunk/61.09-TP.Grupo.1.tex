@@ -145,8 +145,9 @@ Por lo explicado anteriormente, es evidente que como a cada valor se lo trató d
 % ACTIVIDADES PREVIAS - Puesta a prueba
 \subsection{Puesta a prueba}
 
-Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabilidades de cada uno de los 6 valores posibles utilizando los resultados obtenidos en 1000 ejecuciones de la rutina. Para comprobar que el algoritmo planteado funciona, se creo otra función que cuenta las apariciones de un número en un vector de números \textit{probNum(n,vector)} \footnote{``\textit{Ver apéndice.}´´}. La salida por pantalla de la ejecución es: \\
+Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabilidades de cada uno de los 6 valores posibles utilizando los resultados obtenidos en 1000 ejecuciones de la rutina. Para comprobar que el algoritmo planteado funciona, se creo otra función que cuenta las apariciones de un número en un vector de números \textit{probNum(n,vector)}\footnote{``\textit{Véase el Apéndice, sección 4.x}''}. La salida por pantalla de la ejecución es: \\
 
+{\ttfamily\footnotesize
 \indent tiradasDado = randomDado(1000);\\
 \indent octave:2> prob1 = probNum(1,tiradasDado)\\
 \indent prob1 =  0.16200 \\
@@ -161,15 +162,17 @@ Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabil
 \indent octave:7> prob6 = probNum(6,tiradasDado)\\
 \indent prob6 =  0.15500\\
 \indent octave:8> prob1 + prob2 + prob3 + prob4 + prob5 + prob6\\
-\indent ans =  1\\
+\indent ans =  1\\}
 
-Se puede ver que las probabilidades de que salga cada número, no son exactamente las esperadas, pero se acercan a este valor. Cuanto mayor el número de ejecuciones, las probabilidades se van acercando más al valor calculado teóricamente. 
+Se puede ver que las probabilidades de que salga cada número, no son exactamente las esperadas, pero se acercan a este valor. Téngase en cuenta que cuanto mayor es el número de ejecuciones, las probabilidades se van acercando más al valor calculado teóricamente. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.55\textwidth]{images/probabilidadesDados.png}
-	\caption{Cantidad de veces que sale cada valor de un dado en 1000 lanzamientos de este.}
+	\includegraphics[width=0.60\textwidth]{images/probabilidadesDados.png}
+	\caption{Cantidad de veces que sale cada valor\\ de un dado en 1000 lanzamientos de este.}
 \end{figure}
+\bigskip
+
 
 
 % ACTIVIDADES PREVIAS - Predicados
@@ -180,39 +183,103 @@ A veces se necesita estimar la probabilidad de un evento definido a partir de va
 % Desarrollo de cuentas
 \indent $\Omega = \{1,2,3,4,5,6\}$ \\
 
-\indent $M: ``Valor del primer dado"\\$
-\indent $N: ``Valor del segundo dado"\\$
+\indent M: ``Valor del Dado 1''\\
+\indent N: ``Valor del Dado 2''\\
 
-\indent $\mathbb{P}(M=1, N=2) = ({1 \over 6})^2\\$
-\indent $\mathbb{P}(M=2, N=4) = ({1 \over 6})^2\\$
-\indent $\mathbb{P}(M=3, N=6) = ({1 \over 6})^2\\$
+\indent $\mathbb{P}(M=1, N=2) = ({1 \over 6})^2$ \medskip\\
+\indent $\mathbb{P}(M=2, N=4) = ({1 \over 6})^2$ \medskip\\
+\indent $\mathbb{P}(M=3, N=6) = ({1 \over 6})^2$ \medskip\\
 
 \indent $\Rightarrow {P}(N=2M) = 3\cdot({1 \over 36}) = {3 \over 36} \thickapprox 0.08\hat{3}\\$
  % FIN % Desarrollo de cuentas
 
-\noindent Como se puede observar en el desarrollo anterior, solo son tres los casos en los que se cumple que N = 2M. Por la simplicidad del problema hemos obviado las demás probabilidades en las que la igualdad anterior no se cumple.
+\noindent Como se puede observar en el desarrollo anterior, solo son tres los casos en los que se cumple que N = 2M. El lector se habrá dado cuenta de que esta probabilidad no considera todos los casos posibles ya que falta considerar los casos en que M = 2N. De todas maneras, el cálculo de la probabilidad de esta última expresión no es dificil, ya que dicha probabilidad posee el mismo valor que ${P}(N=2M)$. Por si el lector no se encuentra convencido de esto último, veamos:\\
+
+% Desarrollo de cuentas
+\indent $\mathbb{P}(M=2, N=1) = ({1 \over 6})^2$ \medskip\\
+\indent $\mathbb{P}(M=4, N=2) = ({1 \over 6})^2$ \medskip\\
+\indent $\mathbb{P}(M=6, N=3) = ({1 \over 6})^2$ \medskip\\
+
+\indent $\Rightarrow {P}(M=2N) = 3\cdot({1 \over 36}) = {3 \over 36} \thickapprox 0.08\hat{3}\\$
+ % FIN % Desarrollo de cuentas
+
+\medskip
+\noindent Por lo tanto podemos decir que ${P}(N=2M) = {P}(M=2N) \thickapprox 0.08\hat{3}$.
 	\par
-	Para constatar el resultado obtenido proponemos la rutina mostrada en el \refcode{code:punto3} la cual simula la situación planteada. En este, como en la mayor parte de los otros casos, se utiliza la lógica de casos favorables sobre casos posibles para poder determinar el valor de probabilidad buscado. Es decir, se generan valores de dados al azar (simulando ser tiradas), se cuentan cuantos cumplen con lo propuesto y a este valor se lo divide por la cantidad total de veces que se generaron valores. Al correr esta función para \textit{n=10000000}, siendo \textit{n} la \textit{cantidad de tiradas a simular}, se obtuvo que $ {P}(N=2M) = 0.083417$, lo cual es bastante aproximado al valor obtenido analíticamente.
+	Ahora, el propósito nuestro es obtener ${P}[(N=2M) \cup (M=2N)]$, pero si observamos fijamente, podemos ver que ambos eventos de la unión son disjuntos entre sí, por lo que resulta:\\
+
+\indent $\mathbb{P}[(N=2M) \cup (M=2N)] = {P}(N=2M) + {P}(M=2N) = {3 \over 36} + {3 \over 36} = 2({3 \over 36}) = {6 \over 36} = {1 \over 6} \thickapprox 0.1\hat{6}  $ \medskip\\
+
+	\par
+	Para constatar el resultado obtenido proponemos la rutina mostrada en el \refcode{code:punto3} la cual simula la situación planteada. En este, como en la mayor parte de los otros casos, se utiliza la lógica de casos favorables sobre casos posibles para poder determinar el valor de probabilidad buscado. Es decir, se generan valores de dados al azar (simulando ser tiradas), se cuentan cuantos cumplen con lo propuesto y a este valor se lo divide por la cantidad total de veces que se generaron valores. Al correr esta función para \textit{n=1000000}, siendo \textit{n} la \textit{cantidad de tiradas a simular}, se obtuvo que $ {P}[(N=2M) \cup (M=2N)] = 0.16663$, lo cual es bastante aproximado al valor obtenido analíticamente.
 
 % Código
 \lstinputlisting[label=code:punto3,caption=probDobleDelOtro.m]{source/probDobleDelOtro.m}
+\bigskip
+
 
 % ACTIVIDADES PREVIAS - Enigma final
 \subsection{Enigma final}
 
-Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que se hizo a si mismo el Caballero de Méré en el siglo XVII: 
+Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que se hizo a sí mismo el Caballero de Méré en el siglo XVII: 
 
 \begin{quotation}
-\em``¿Cómo puede ser que cuando apuesto a que voy a obtener al menos un doble as en 24 tiradas de dos dados suelo perder, siendo que suelo ganar cuando apuesto a que voy a obtener al menos un as en 4 tiradas?''
+\em``¿Cómo puede ser que cuando apuesto a que voy a obtener al menos un doble As en 24 tiradas de dos dados suelo perder, siendo que suelo ganar cuando apuesto a que voy a obtener al menos un As en 4 tiradas?''
 \end{quotation}
 
-\noindent [ Colocar contenido aquí ]
+\noindent Para analizar esta especie de acertijo, primeramente tengamos en cuenta que, definiendo \textit{S} y \textit{NS} como\\
+
+\indent \textit{S: ``Sale As en una tirada del dado''}\\
+\indent \textit{NS: ``No sale As en una tirada del dado''}\\
+
+\noindent sabemos que, $\mathbb{P}(S) = {1 \over 6}$ y $\mathbb{P}(NS) = {5 \over 6}$. 
+Para calcular la \textit{probabilidad de obtener al menos un doble As en 24 tiradas de dos dados} podemos plantear analíticamente lo que sigue:\\
+
+% Desarrollo de cuentas
+\indent \textit{X: ``Cantidad de Ases en una tirada de los dos dados"}\\
+\indent $\Omega(X) = \{0,1,2\}$ \\
+
+\indent $\mathbb{P}(X=0) = ({1 \over 36})5 = {5 \over 36}$ \medskip\\
+\indent $\mathbb{P}(X=1) = ({1 \over 6}{5 \over 6})6 = {5 \over 6}$ \medskip\\
+\indent $\mathbb{P}(X=2) = {1 \over 6}{1 \over 6} = {1 \over 36}$ \medskip\\
+
+\noindent De esto podemos deducir fácilmente que,\\
+
+\indent $\mathbb{P}(X \neq 2) = {35 \over 36}$ \medskip\\
+\indent $\mathbb{P}(\Omega) = {5 \over 36} + {5 \over 6} + {1 \over 36} = 1$ \medskip\\
+
+\noindent Entonces, definiendo \textit{A} como sigue, resulta:\\
+
+\indent \textit{A: ``Obtener al menos un doble As en 24 tiradas de dos dados.''}\\
+\indent \textit{$\bar{A}$: ``No obtener ningún doble As en 24 tiradas de dos dados.''}\\
+
+$\mathbb{P}(A) = 1 - \mathbb{P}(\bar{A}) = 1 - [\mathbb{P}(X \neq 2)]^{24} = 1- ({35 \over 36})^{24} \thickapprox 0.4914$ \medskip\\
+ 
+En este resultado se puede observar que las probabilidades de obtener al menos un doble As en 24 tiradas de dos dados es aproximadamente del 50\%. Para verificar la validez de este resultado, en el \refcode{code:punto4.1} se muestra un algoritmo que simula dicha situación.  Con este hemos obtenido que, para un número de repeticiones \mbox{\textit{n = 1000000}}, $\mathbb{P}(A) = 0.49189$, el cual es un valor muy cercano al calculado analíticamente.
 
 % Código
-\lstinputlisting[label=code:punto4.1,caption=probDobleAsEn24Tiradas.m]{source/probDobleAsEn24Tiradas.m}
+\lstinputlisting[label=code:punto4.1,caption=probDobleAsEn24Tiradas.m]{source/probDobleAsEn24Tiradas.m} 
+\bigskip\bigskip
+
+	Ahora bien, para calcular la \textit{probabilidad de obtener al menos un As en 4 tiradas} podemos plantear la siguiente solución analítica:\\
+
+% Desarrollo de cuentas
+\indent \textit{B: ``Obtener al menos un As en 4 tiradas''}\\
+\indent \textit{$\bar{B}$: ``No Obtener ningún As en 4 tiradas''}\\
+
+$\mathbb{P}(B) = 1 - \mathbb{P}(\bar{B}) = 1- ({5 \over 6} {5 \over 6})^4 = 1- ({5 \over 6})^8 \thickapprox 0.76743$\\\bigskip
+
+\noindent Como se puede observar, la probabilidad de no obtener ningún As en una tirada es igual a la multiplicación de las probabilidades de no obtener As en la tirada de un solo dado. Esto se debe a que estos eventos son independientes entre sí, lo que nos posibilita hacer el cálculo de esa forma. Además, como el lanzamiento de dos dados en reiteradas ocaciones son independientes entre sí, entonces podemos hacer el cálculo para 4 tiradas de la misma manera que como lo hemos hecho para dos dados. Para constatar los cálculos empíricamente presentamos el \refcode{code:punto4.2} que simula dicha situación. Con este hemos obtenido que, para un número de repeticiones \mbox{\textit{n = 1000000}}, $\mathbb{P}(B) = 0.76781$, el cual es un valor bastante aproximado a lo obtenido analíticamente.
 
 % Código
 \lstinputlisting[label=code:punto4.2,caption=probAsEn4Tiradas.m]{source/probAsEn4Tiradas.m}
+\bigskip
+
+Teniendo los dos resultados de las probabilidades a la vista, es claro ver el por qué de que el Caballero de Méré suela perder cuando apuesta a que va a obtener al menos un doble As en 24 tiradas de dos dados y que suela ganar cuando apuesta a que va a obtener al menos un As en 4 tirada, ya que la probabilidad del primer caso es mas baja que la del segundo caso. De todas formas, se puede observar que ambas probabilidades son altas, por lo que las probabilidades de ganar cada vez que apuesta en ambas situaciones se inclinan en general a su favor.
+\bigskip
+
+
+
 
 % ACTIVIDAD PRINCIPAL
 \section{Actividad principal}
@@ -232,18 +299,27 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 	\par 
 	Habiendonos situado en lo recién expuesto, pasaremos a explorar y analizar las propiedades estadísticas de las secuencias generadas.
 
+
+
+% ACTIVIDAD PRINCIPAL - 
 \subsection{Algoritmo generador de secuencias}
 [Hacer]
 
+
+% ACTIVIDAD PRINCIPAL - 
 \subsection{Análisis del algoritmo}
 
-	Si se asume que \textbf{\textit{L}} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es:\\
+	Si se asume que \textit{L} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es:\\
 	 
-	 $\mathbb{E}(\textbf{\textit{L}}) = \sum\limits_{i=1}^n l_{i} P_{i}(l_{i}) $ \\
- con \textit{n} la cantidad de secuencias, siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$P(l_i)$} la probabilidad de \textit{$l_i$}. \\
- Entonces se puede simplificar la fórmula a:\\
-$\mathbb{E}(\textbf{\textit{L}}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,\\
-que es lo mismo que se calcula en el algoritmo anterior, o sea, la suma de las longitudes dividido la cantidad de secuencias.
+$\mathbb{E}(\textit{L}) = \sum\limits_{i=1}^n l_{i} P_{i}(l_{i}) $
+
+\bigskip
+\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$P(l_i)$} la probabilidad de \textit{$l_i$}. Entonces se puede simplificar la fórmula a:\\
+
+\indent $\mathbb{E}(\textit{L}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,
+
+\bigskip
+\noindent que es lo mismo que se calcula en el algoritmo anterior, o sea, la suma de las longitudes dividido la cantidad de secuencias.
 	
 \end{document}
 
