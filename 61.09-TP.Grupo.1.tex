@@ -145,12 +145,30 @@ Por lo explicado anteriormente, es evidente que como a cada valor se lo trató d
 % ACTIVIDADES PREVIAS - Puesta a prueba
 \subsection{Puesta a prueba}
 
-Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabilidades de cada uno de los 6 valores posibles utilizando los resultados obtenidos en 1000 ejecuciones de la rutina. [ Colocar contenido aquí ]
+Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabilidades de cada uno de los 6 valores posibles utilizando los resultados obtenidos en 1000 ejecuciones de la rutina. Para comprobar que el algoritmo planteado funciona, se creo otra función que cuenta las apariciones de un número en un vector de números \textit{probNum(n,vector)} \footnote{``\textit{Ver apéndice.}´´}. La salida por pantalla de la ejecución es: \\
+
+\indent tiradasDado = randomDado(1000);\\
+\indent octave:2> prob1 = probNum(1,tiradasDado)\\
+\indent prob1 =  0.16200 \\
+\indent octave:3> prob2 = probNum(2,tiradasDado)\\
+\indent prob2 =  0.17800\\
+\indent octave:4> prob3 = probNum(3,tiradasDado)\\
+\indent prob3 =  0.17700\\
+\indent octave:5> prob4 = probNum(4,tiradasDado)\\
+\indent prob4 =  0.17000\\
+\indent octave:6> prob5 = probNum(5,tiradasDado)\\
+\indent prob5 =  0.15800\\
+\indent octave:7> prob6 = probNum(6,tiradasDado)\\
+\indent prob6 =  0.15500\\
+\indent octave:8> prob1 + prob2 + prob3 + prob4 + prob5 + prob6\\
+\indent ans =  1\\
+
+Se puede ver que las probabilidades de que salga cada número, no son exactamente las esperadas, pero se acercan a este valor. Cuanto mayor el número de ejecuciones, las probabilidades se van acercando más al valor calculado teóricamente. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.55\textwidth]{images/probabilidadesDados.png}
-	\caption{Cantidad de veces que sale cada valor de un\\ dado en 1000 lanzamientos de este.}
+	\caption{Cantidad de veces que sale cada valor de un dado en 1000 lanzamientos de este.}
 \end{figure}
 
 
@@ -194,7 +212,7 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 \lstinputlisting[label=code:punto4.1,caption=probDobleAsEn24Tiradas.m]{source/probDobleAsEn24Tiradas.m}
 
 % Código
-\lstinputlisting[label=code:punto4.2,caption=probDobleAs.m]{source/probDobleAs.m}
+\lstinputlisting[label=code:punto4.2,caption=probAsEn4Tiradas.m]{source/probAsEn4Tiradas.m}
 
 % ACTIVIDAD PRINCIPAL
 \section{Actividad principal}
@@ -213,4 +231,19 @@ Con lo hecho y aprendido hasta ahora podemos plantearnos la misma pregunta que s
 	Es importante remarcar que en cada paso se elige cualquiera sin importar si ya había sido elegida e independientemente de los valores obtenidos anteriormente. Como se puede apreciar, las longitudes de estas secuencias (y por lo tanto, el tiempo y la memoria que consumen) son aleatorias.
 	\par 
 	Habiendonos situado en lo recién expuesto, pasaremos a explorar y analizar las propiedades estadísticas de las secuencias generadas.
+
+\subsection{Algoritmo generador de secuencias}
+[Hacer]
+
+\subsection{Análisis del algoritmo}
+
+	Si se asume que \textbf{\textit{L}} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es:\\
+	 
+	 $\mathbb{E}(\textbf{\textit{L}}) = \sum\limits_{i=1}^n l_{i} P_{i}(l_{i}) $ \\
+ con \textit{n} la cantidad de secuencias, siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$P(l_i)$} la probabilidad de \textit{$l_i$}. \\
+ Entonces se puede simplificar la fórmula a:\\
+$\mathbb{E}(\textbf{\textit{L}}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,\\
+que es lo mismo que se calcula en el algoritmo anterior, o sea, la suma de las longitudes dividido la cantidad de secuencias.
+	
 \end{document}
+
