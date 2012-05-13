@@ -132,6 +132,8 @@ A continuación, en el \refcode{code:punto1}, se muestra una rutina que, a parti
 \medskip
 \par
 Por lo explicado anteriormente, es evidente que como a cada valor se lo trató de la misma manera, se puede decir que no alteramos los resultados del \textbf{\textit{rand}}, y por lo tanto la probabilidad de cada número sigue siendo la misma.
+	\par
+	Un detalle no menor a tener en cuenta es la gran importancia del criterio con el que se redondean los números ya que para consevar la equiprobabilidad de los valores hay que utilizar el mismo criterio para todos ellos.
 
 % ACTIVIDADES PREVIAS - Puesta a prueba
 \subsection{Puesta a prueba}
@@ -140,7 +142,7 @@ Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabil
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.50\textwidth]{images/probabilidadesDados.png}
+	\includegraphics[width=0.55\textwidth]{images/probabilidadesDados.png}
 	\caption{Cantidad de veces que sale cada valor de un\\ dado en 1000 lanzamientos de este.}
 \end{figure}
 
@@ -148,10 +150,27 @@ Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabil
 % ACTIVIDADES PREVIAS - Predicados
 \subsection{Predicados}
 
-A veces se necesita estimar la probabilidad de un evento definido a partir de variables aleatorias. [ Colocar contenido aquí ]
+A veces se necesita estimar la probabilidad de un evento definido a partir de variables aleatorias. Por ejemplo, supongamos que deseamos estimar la probabilidad de que al tirar dos dados, uno tenga el doble de valor que el otro. Para esto proponemos la siguiente solución analítica:\\
+
+% Desarrollo de cuentas
+\indent $\Omega = \{1,2,3,4,5,6\}$ \\
+
+\indent $M: "Valor del primer dado"\\$
+\indent $N: "Valor del segundo dado"\\$
+
+\indent $\mathbb{P}(M=1, N=2) = ({1 \over 6})^2\\$
+\indent $\mathbb{P}(M=2, N=4) = ({1 \over 6})^2\\$
+\indent $\mathbb{P}(M=3, N=6) = ({1 \over 6})^2\\$
+
+\indent $\Rightarrow {P}(N=2M) = 3\cdot({1 \over 36}) = {3 \over 36}\\$
+ % FIN % Desarrollo de cuentas
+
+\noindent Como se puede observar en el desarrollo anterior, solo son tres los casos en los que se cumple que N = 2M. Por la simplicidad del problema hemos obviado las demás probabilidades en las que la igualdad anterior no se cumple.
+	\par
+	Para constatar el resultado obtenido proponemos la rutina mostrada en el \refcode{code:punto3} la cual simula la situación planteada. En este, como en la mayor parte de los otros casos, se utiliza la lógica de casos favorables sobre casos posibles para poder determinar el valor de probabilidad buscado. Es decir, se generan valores de dados al azar (simulando ser tiradas), se cuentan cuantos cumplen con lo propuesto y a este valor se lo divide por la cantidad total de veces que se generaron valores. Al correr esta función para \textit{n=10000000}, siendo \textit{n} la \textit{cantidad de tiradas a simular}, se obtuvo que $ {P}(N=2M) = 0.083417$, lo cual es bastante aproximado al valor obtenido analíticamente.
 
 % Código
-\lstinputlisting[label=code:punto2,caption=probDobleDelOtro.m]{source/probDobleDelOtro.m}
+\lstinputlisting[label=code:punto3,caption=probDobleDelOtro.m]{source/probDobleDelOtro.m}
 
 % ACTIVIDADES PREVIAS - Enigma final
 \subsection{Enigma final}
