@@ -24,6 +24,7 @@
 % Paquetes extras
 \usepackage{amssymb}
 \usepackage{float}
+\usepackage{graphicx}
 
 %% Fin PAQUETES
 
@@ -44,10 +45,6 @@
 \DeclareCaptionFont{style_textfont}{\it\color{black}}
 \DeclareCaptionFormat{listing}{\colorbox{gray95}{\parbox{16.78cm}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=style_labelfont,textfont=style_textfont}
-% Titulo de las cajas de código
-\renewcommand{\lstlistingname}{Código}
-% Referencia a los códigos
-\newcommand{\refcode}[1]{\textit{Código \ref{#1}}}
 
 \lstset{
 	aboveskip = {1.5\baselineskip},
@@ -77,6 +74,21 @@
 	title = \null, % Default value: title=\lstname
 	upquote = true,                  
 }
+
+%% FIGURAS
+\captionsetup[figure]{labelfont=bf,textfont=it}
+
+% COMANDOS
+
+%% Titulo de las cajas de código
+\renewcommand{\lstlistingname}{Código}
+%% Titulo de las figuras
+\renewcommand{\figurename}{Figura}
+%% Referencia a los códigos
+\newcommand{\refcode}[1]{\textit{Código \ref{#1}}}
+%% Referencia a las imagenes
+\newcommand{\refimage}[1]{\textit{Imagen \ref{#1}}}
+
 
 
 \begin{document}
@@ -125,6 +137,12 @@ Por lo explicado anteriormente, es evidente que como a cada valor se lo trató d
 \subsection{Puesta a prueba}
 
 Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabilidades de cada uno de los 6 valores posibles utilizando los resultados obtenidos en 1000 ejecuciones de la rutina. [ Colocar contenido aquí ]
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.50\textwidth]{images/probabilidadesDados.png}
+	\caption{Cantidad de veces que sale cada valor de un\\ dado en 1000 lanzamientos de este.}
+\end{figure}
 
 
 % ACTIVIDADES PREVIAS - Predicados
