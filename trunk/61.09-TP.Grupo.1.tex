@@ -124,16 +124,23 @@ Tal como lo sugiere el título de este apartado, se mostrarán a continuación u
 % ACTIVIDADES PREVIAS - Una primera simulación
 \subsection{Una primera simulación}
 
-A continuación, en el \refcode{code:punto1}, se muestra una rutina que, a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede ver, se ha utilizado la función nativa \textbf{\textit{rand}}, la cual devuelve una matriz (que es utilizada como vector) con valores aleatrios entre 0 y 1. Para ajustarla a nuestras necesidades, o sea, obtener valores aleatorios entre 1 y 6 hemos multiplicado dicho vector por 6. De esta manera pasa a contener valores aleatorios entre 0 y 6. Luego, mediante otra funcion nativa llamada \textbf{\textit{ceil}}, se redondea a los valores enteros próximos superiores de cada uno (ceiling), obteniendo como resultado un vector con valores enteros entre 1 y 6. 
+A continuación, en el \refcode{code:punto1.1}, se muestra una rutina que, a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede ver, se ha utilizado la función nativa \textbf{\textit{rand}}, la cual devuelve una matriz (que es utilizada como vector) con valores aleatrios entre 0 y 1. Para ajustarla a nuestras necesidades, o sea, obtener valores aleatorios entre 1 y 6 hemos multiplicado dicho vector por 6. De esta manera pasa a contener valores aleatorios entre 0 y 6. Luego, mediante otra funcion nativa llamada \textbf{\textit{ceil}}, se redondea a los valores enteros próximos superiores de cada uno (ceiling), obteniendo como resultado un vector con valores enteros entre 1 y 6. 
 
 % Código
-\lstinputlisting[label=code:punto1,caption=randomDado.m]{source/randomDado.m}
+\lstinputlisting[label=code:punto1.1,caption=randomDado.m]{source/randomDado.m}
 
 \medskip
 \par
 Por lo explicado anteriormente, es evidente que como a cada valor se lo trató de la misma manera, se puede decir que no alteramos los resultados del \textbf{\textit{rand}}, y por lo tanto la probabilidad de cada número sigue siendo la misma.
 	\par
 	Un detalle no menor a tener en cuenta es la gran importancia del criterio con el que se redondean los números ya que para consevar la equiprobabilidad de los valores hay que utilizar el mismo criterio para todos ellos.
+	\par
+	Habiendo conseguido valores aleatorios entre 1 y 6 mediante el procedimiento antes mencionado, ahora deseamos obtener valores aleatorios entre dos números enteros genéricos, o sea, a partir de un intervalo cualquiera. El problema radica ahora en que si ninguno de los extremos es el 0, los valores no caen dentro del intervalo esperado y, por ende, habría que desplazar el intervalo. Por lo tanto, una forma de conseguir números enteros aleatorios en un intervalo genérico es, primero, calcular los números aleatorios entre 0 y la longitud del intervalo requerido más uno (porque se redondea para arriba). Luego, hay que sumarle el extremo inferior menos uno, obteniendo así números enteros aleatorios dentro del intervalo esperado. Este método es el utilizado en el algoritmo del \refcode{code:punto1.2}.
+
+% Código
+\lstinputlisting[label=code:punto1.2,caption=randomDado.m]{source/randomGenerico.m}
+\bigskip
+
 
 % ACTIVIDADES PREVIAS - Puesta a prueba
 \subsection{Puesta a prueba}
