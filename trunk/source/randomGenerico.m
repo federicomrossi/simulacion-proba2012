@@ -3,8 +3,9 @@
 # extremos del intervalo(incluidos).
 # POST: se devuelve un vector de longitud n con los valores obtenidos.
 function listaDeValores = randomGenerico(piso,techo,n)
-
-	i = ceil(piso-1+(rand(1,n)*(techo-piso+1)));
+	
+	i = ceil((rand(1,n)*(techo-piso+1)))+piso-1;
+	
 	listaDeValores = i;
 
 endfunction
