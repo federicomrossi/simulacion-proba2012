@@ -190,28 +190,28 @@ A veces se necesita estimar la probabilidad de un evento definido a partir de va
 \indent $\mathbb{P}(M=2, N=4) = ({1 \over 6})^2$ \medskip\\
 \indent $\mathbb{P}(M=3, N=6) = ({1 \over 6})^2$ \medskip\\
 
-\indent $\Rightarrow {P}(N=2M) = 3\cdot({1 \over 36}) = {3 \over 36} \thickapprox 0.08\hat{3}\\$
+\indent $\Rightarrow \mathbb{P}(N=2M) = 3\cdot({1 \over 36}) = {3 \over 36} \thickapprox 0.08\hat{3}\\$
  % FIN % Desarrollo de cuentas
 
-\noindent Como se puede observar en el desarrollo anterior, solo son tres los casos en los que se cumple que N = 2M. El lector se habrá dado cuenta de que esta probabilidad no considera todos los casos posibles ya que falta considerar los casos en que M = 2N. De todas maneras, el cálculo de la probabilidad de esta última expresión no es dificil, ya que dicha probabilidad posee el mismo valor que ${P}(N=2M)$. Por si el lector no se encuentra convencido de esto último, veamos:\\
+\noindent Como se puede observar en el desarrollo anterior, solo son tres los casos en los que se cumple que N = 2M. El lector se habrá dado cuenta de que esta probabilidad no considera todos los casos posibles ya que falta considerar los casos en que M = 2N. De todas maneras, el cálculo de la probabilidad de esta última expresión no es dificil, ya que dicha probabilidad posee el mismo valor que $\mathbb{P}(N=2M)$. Por si el lector no se encuentra convencido de esto último, veamos:\\
 
 % Desarrollo de cuentas
 \indent $\mathbb{P}(M=2, N=1) = ({1 \over 6})^2$ \medskip\\
 \indent $\mathbb{P}(M=4, N=2) = ({1 \over 6})^2$ \medskip\\
 \indent $\mathbb{P}(M=6, N=3) = ({1 \over 6})^2$ \medskip\\
 
-\indent $\Rightarrow {P}(M=2N) = 3\cdot({1 \over 36}) = {3 \over 36} \thickapprox 0.08\hat{3}\\$
+\indent $\Rightarrow \mathbb{P}(M=2N) = 3\cdot({1 \over 36}) = {3 \over 36} \thickapprox 0.08\hat{3}\\$
  % FIN % Desarrollo de cuentas
 
 \medskip
-\noindent Por lo tanto podemos decir que ${P}(N=2M) = {P}(M=2N) \thickapprox 0.08\hat{3}$.
+\noindent Por lo tanto podemos decir que $\mathbb{P}(N=2M) = \mathbb{P}(M=2N) \thickapprox 0.08\hat{3}$.
 	\par
-	Ahora, el propósito nuestro es obtener ${P}[(N=2M) \cup (M=2N)]$, pero si observamos fijamente, podemos ver que ambos eventos de la unión son disjuntos entre sí, por lo que resulta:\\
+	Ahora, el propósito nuestro es obtener $\mathbb{P}[(N=2M) \cup (M=2N)]$, pero si observamos fijamente, podemos ver que ambos eventos de la unión son disjuntos entre sí, por lo que resulta:\\
 
-\indent $\mathbb{P}[(N=2M) \cup (M=2N)] = {P}(N=2M) + {P}(M=2N) = {3 \over 36} + {3 \over 36} = 2({3 \over 36}) = {6 \over 36} = {1 \over 6} \thickapprox 0.1\hat{6}  $ \medskip\\
+\indent $\mathbb{P}[(N=2M) \cup (M=2N)] = \mathbb{P}(N=2M) + \mathbb{P}(M=2N) = {3 \over 36} + {3 \over 36} = 2({3 \over 36}) = {6 \over 36} = {1 \over 6} \thickapprox 0.1\hat{6}  $ \medskip\\
 
 	\par
-	Para constatar el resultado obtenido proponemos la rutina mostrada en el \refcode{code:punto3} la cual simula la situación planteada. En este, como en la mayor parte de los otros casos, se utiliza la lógica de casos favorables sobre casos posibles para poder determinar el valor de probabilidad buscado. Es decir, se generan valores de dados al azar (simulando ser tiradas), se cuentan cuantos cumplen con lo propuesto y a este valor se lo divide por la cantidad total de veces que se generaron valores. Al correr esta función para \textit{n=1000000}, siendo \textit{n} la \textit{cantidad de tiradas a simular}, se obtuvo que $ {P}[(N=2M) \cup (M=2N)] = 0.16663$, lo cual es bastante aproximado al valor obtenido analíticamente.
+	Para constatar el resultado obtenido proponemos la rutina mostrada en el \refcode{code:punto3} la cual simula la situación planteada. En este, como en la mayor parte de los otros casos, se utiliza la lógica de casos favorables sobre casos posibles para poder determinar el valor de probabilidad buscado. Es decir, se generan valores de dados al azar (simulando ser tiradas), se cuentan cuantos cumplen con lo propuesto y a este valor se lo divide por la cantidad total de veces que se generaron valores. Al correr esta función para \textit{n=1000000}, siendo \textit{n} la \textit{cantidad de tiradas a simular}, se obtuvo que $\mathbb{P}[(N=2M) \cup (M=2N)] = 0.16663$, lo cual es bastante aproximado al valor obtenido analíticamente.
 
 % Código
 \lstinputlisting[label=code:punto3,caption=probDobleDelOtro.m]{source/probDobleDelOtro.m}
@@ -311,10 +311,10 @@ Teniendo los dos resultados de las probabilidades a la vista, es claro ver el po
 
 	Si se asume que \textit{L} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es:\\
 	 
-$\mathbb{E}(\textit{L}) = \sum\limits_{i=1}^n l_{i} P_{i}(l_{i}) $
+$\mathbb{E}(\textit{L}) = \sum\limits_{i=1}^n l_{i} \mathbb{P}_{i}(l_{i}) $
 
 \bigskip
-\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$P(l_i)$} la probabilidad de \textit{$l_i$}. Entonces se puede simplificar la fórmula a:\\
+\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Entonces se puede simplificar la fórmula a:\\
 
 \indent $\mathbb{E}(\textit{L}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,
 
