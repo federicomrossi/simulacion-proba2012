@@ -112,7 +112,9 @@ Tal como lo sugiere el título de este apartado, se mostrarán a continuación u
 % ACTIVIDADES PREVIAS - Una primera simulación
 \subsection{Una primera simulación}
 
-A continuación, en el \refcode{code:punto1}, se muestra una rutina que, a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede ver, se ha utilizado la función nativa \textbf{\textit{rand}}, la cual devuelve una matriz (que es utilizada como vector) con valores aleatrios entre 0 y 1. Para ajustarla a nuestras necesidades, o sea, obtener valores aleatorios entre 1 y 6 hemos multiplicado dicho vector por 6. De esta manera pasa a contener valores aleatorios entre 0 y 6. Luego, mediante otra funcion nativa llamada \textbf{\textit{ceil}}, se redondea a los valores enteros próximos superiores de cada uno (ceiling), obteniendo como resultado un vector con valores enteros entre 1 y 6.
+A continuación, en el \refcode{code:punto1}, se muestra una rutina que, a partir de un generador de números pseudo-aleatorios, permite simular los valores de un dado. Como se puede ver, se ha utilizado la función nativa \textbf{\textit{rand}}, la cual devuelve una matriz (que es utilizada como vector) con valores aleatrios entre 0 y 1. Para ajustarla a nuestras necesidades, o sea, obtener valores aleatorios entre 1 y 6 hemos multiplicado dicho vector por 6. De esta manera pasa a contener valores aleatorios entre 0 y 6. Luego, mediante otra funcion nativa llamada \textbf{\textit{ceil}}, se redondea a los valores enteros próximos superiores de cada uno (ceiling), obteniendo como resultado un vector con valores enteros entre 1 y 6. 
+
+Por lo explicado anteriormente, es evidente que como a cada valor se lo trató de la misma manera, se puede decir que no alteramos los resultados del \textbf{\textit{rand}},y por lo tanto la probabilidad de cada número sigue siendo la misma.
 
 % Código
 \lstinputlisting[label=code:punto1,caption=randomDado.m]{source/randomDado.m}
