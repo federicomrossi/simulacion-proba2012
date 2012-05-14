@@ -302,7 +302,7 @@ Teniendo los dos resultados de las probabilidades a la vista, es claro ver el po
 
 
 
-% ACTIVIDAD PRINCIPAL - 
+% ACTIVIDAD PRINCIPAL - Algoritmo generador de secuencias
 \subsection{Algoritmo generador de secuencias}
 
 En el \refcode{code:punto5} se puede observar el algoritmo que simula la situación antes mencionada. Este es capaz de simular muchas veces las secuencias de entradas descritas, siendo posible la especificación la cantidad de entradas posibles (\textit{M}) y la cantidad de secuencias a generar (\textit{N}).
@@ -311,7 +311,7 @@ En el \refcode{code:punto5} se puede observar el algoritmo que simula la situaci
 \lstinputlisting[label=code:punto5,caption=generaSecuencias.m]{source/generaSecuencias.m}
 \bigskip
 
-% ACTIVIDAD PRINCIPAL - 
+% ACTIVIDAD PRINCIPAL - Análisis del algoritmo
 \subsection{Análisis del algoritmo}
 
 	Si se asume que \textit{L} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es:\\
@@ -351,9 +351,24 @@ En la \textit{Figura 2} se muestra un gráfico de las longitudes de las secuenci
 \bigskip
 
 
+
+% ACTIVIDAD PRINCIPAL - Probabilidad de los posibles valores de L
+\subsection{Probabilidad de los posibles valores de \textit{L}}
+
+Deseamos ahora estimar las probabilidades de los distintos valores posibles de \textit{L} a partir de los 1000 valores obtenidos en los apartados anteriores. Para esto se utilizó la rutina mostrada en el \refcode{code:punto7}, la cual, pasándole la longitud a estimar y la lista de secuencias, calcula la probabilidad de dicha longitud.
+
+% Código
+\lstinputlisting[label=code:punto7,caption=probDeLaLongitud.m]{source/probDeLaLongitud.m}
+\bigskip
+
+
+
 % APENDICE -
 \section{Apéndice}
 \subsection{Algoritmos relevantes}
+
+En las siguientes secciones se detalla el funcionamiento de las funciones genéricas utilizadas para realizar los algoritmos de simulación.
+
 \subsubsection{probNum(n,vector)}
 
 Este algoritmo cuenta la cantidad de apariciones de un número 'n' en el 'vector', y luego lo divide por el largo del vector. Si suponemos que esos números en el vector son elegidos aleatoriamente, entonces lo que devuelve la función es la probabilidad de aparición de n.
