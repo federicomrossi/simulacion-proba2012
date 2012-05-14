@@ -1,9 +1,8 @@
 # Funcion que calcula la probabilidad de la longitud de una secuencia dentro de 
-# una lista de secuencias .
+# una lista de secuencias.
 # PRE: Debe pasarse por parametro la listaDeSecuencias, y la longitud de la que 
 # se quiere calcular la probabilidad.
 # POST: Se devuelve la probabilidad.
-
 function y = probDeLaLongitud(longitud,listaDeSecuencias) 
 
 	cantApariciones = 0;	

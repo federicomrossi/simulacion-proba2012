@@ -355,38 +355,97 @@ En la \textit{Figura 2} se muestra un gráfico de las longitudes de las secuenci
 % ACTIVIDAD PRINCIPAL - Probabilidad de los posibles valores de L
 \subsection{Probabilidad de los posibles valores de \textit{L}}
 
-Deseamos ahora estimar las probabilidades de los distintos valores posibles de \textit{L} a partir de los 1000 valores obtenidos en los apartados anteriores. Para esto se utilizó la rutina mostrada en el \refcode{code:punto7}, la cual, pasándole la longitud a estimar y la lista de secuencias, calcula la probabilidad de dicha longitud.
+Deseamos ahora estimar las probabilidades de los distintos valores posibles de \textit{L} a partir de los 1000 valores obtenidos en los apartados anteriores. Para esto se utilizó la rutina mostrada en el \refcode{code:punto7}, la cual, pasándole una lista de secuencias, calcula la probabilidad de cada una de las distintas longitudes de las secuencias contenidas en dicha lista.
+	\par
+	Como puede observarse, este algoritmo utiliza una función llamada \textit{probDeLaLongitud} para calcular las probabilidades individuales de cada longitud. Para más detalles sobre esta, véase el \textit{Apéndice}, \textit{sección 4.1.5}. Luego de procesar cada longitud se devuelve una matriz de dos columnas, siendo la primera la representativa de las longitudes y la segunda la representativa de las probabilidades de cada longitud.
+
 
 % Código
-\lstinputlisting[label=code:punto7,caption=probDeLaLongitud.m]{source/probDeLaLongitud.m}
+\lstinputlisting[label=code:punto7,caption=probDeTodasLasLongitudes.m]{source/probDeTodasLasLongitudes.m}
 \bigskip
 
+
+\noindent Para una estimación hecha se han obtenido los siguientes valores de longitudes y probabilidades respectivas:\\
+
+{\ttfamily\footnotesize
+\indent octave:15> listaDeSecuencias = generaSecuencias(1000,10);\\
+\indent octave:16> probDeTodasLasLongitudes(listaDeSecuencias)\\
+\indent ans =\\
+
+\indent    3.9000e+01   2.2000e-02\\
+\indent    3.5000e+01   2.6000e-02\\
+\indent    1.5000e+01   1.5000e-02\\
+\indent    5.7000e+01   5.0000e-03\\
+\indent    3.4000e+01   1.9000e-02\\
+\indent    2.0000e+01   3.9000e-02\\
+\indent    2.4000e+01   3.4000e-02\\
+\indent    1.9000e+01   3.6000e-02\\
+\indent    3.2000e+01   2.7000e-02\\
+\indent    1.3000e+01   9.0000e-03\\
+\indent    2.9000e+01   3.0000e-02\\
+\indent    4.6000e+01   7.0000e-03\\
+\indent    1.8000e+01   3.7000e-02\\
+\indent    2.7000e+01   5.2000e-02\\
+\indent    2.6000e+01   4.7000e-02\\
+\indent    3.3000e+01   1.5000e-02\\
+\indent    5.1000e+01   3.0000e-03\\
+\indent    2.5000e+01   4.6000e-02\\
+\indent    1.6000e+01   2.4000e-02\\
+\indent    5.4000e+01   5.0000e-03\\
+\indent    3.0000e+01   3.9000e-02\\
+\indent    2.2000e+01   5.2000e-02\\
+\indent    3.8000e+01   1.8000e-02\\
+\indent    2.3000e+01   5.3000e-02\\
+\indent    3.1000e+01   3.3000e-02\\
+\indent    4.0000e+01   1.5000e-02\\
+\indent    6.9000e+01   3.0000e-03\\
+\indent    1.7000e+01   3.4000e-02\\
+\indent    4.8000e+01   1.4000e-02\\
+\indent    2.8000e+01   2.8000e-02\\
+\indent    3.6000e+01   2.6000e-02\\
+\indent    7.2000e+01   2.0000e-03\\
+\indent    2.1000e+01   3.1000e-02\\
+\indent    5.5000e+01   5.0000e-03\\
+\indent    1.1000e+01   4.0000e-03\\
+\indent    5.8000e+01   4.0000e-03\\
+\indent    1.2000e+01   8.0000e-03\\
+\indent    4.3000e+01   1.1000e-02\\
+\indent    3.7000e+01   1.7000e-02\\
+\indent    7.9000e+01   1.0000e-03\\
+\indent    4.1000e+01   8.0000e-03\\
+\indent    6.2000e+01   2.0000e-03\\
+\indent    4.2000e+01   1.2000e-02\\
+\indent    4.5000e+01   9.0000e-03\\
+\indent    4.7000e+01   8.0000e-03\\
+\indent    5.3000e+01   6.0000e-03\\
+\indent    4.4000e+01   1.1000e-02\\
+\indent    1.4000e+01   1.4000e-02\\
+\indent    5.0000e+01   8.0000e-03\\
+\indent    6.0000e+01   4.0000e-03\\
+\indent    5.6000e+01   5.0000e-03\\
+\indent    5.2000e+01   3.0000e-03\\
+\indent    6.4000e+01   2.0000e-03\\
+\indent    4.9000e+01   1.0000e-03\\
+\indent    6.5000e+01   3.0000e-03\\
+\indent    6.3000e+01   1.0000e-03\\
+\indent    7.0000e+01   2.0000e-03\\
+\indent    6.8000e+01   1.0000e-03\\
+\indent    7.5000e+01   1.0000e-03\\
+\indent    6.6000e+01   1.0000e-03\\
+\indent    5.9000e+01   1.0000e-03\\
+\indent    7.1000e+01   1.0000e-03\\
+}
 
 
 % APENDICE
 \section{Apéndice}
+
 
 % APENDICE - Algoritmos relevantes
 \subsection{Algoritmos relevantes}
 
 En las siguientes secciones se detalla el funcionamiento de las funciones genéricas utilizadas para realizar los algoritmos de simulación.
 
-\subsubsection{probNum(n,vector)}
-
-Este algoritmo (\refcode{code:punto8}) cuenta la cantidad de apariciones de un número 'n' en el 'vector', y luego lo divide por el largo del vector. Si suponemos que esos números en el vector son elegidos aleatoriamente, entonces lo que devuelve la función es la probabilidad de aparición de n.
-
-% Código
-\lstinputlisting[label=code:punto8,caption=probNum.m]{source/probNum.m}
-\bigskip
-
-
-\subsubsection{histogramaDeLaEsperanzaDeLaLongitud(listaDeSecuencias)}
-
-Esta función (\refcode{code:punto9}) grafica los valores de la longitud de la secuencias que hay en la 'listaDeSecuencias'. Además grafica la esperanza de la longitud.\bigskip\\
-
-% Código
-\lstinputlisting[label=code:punto9,caption=histogramaEsperanzaDeLaLongitud.m]{source/histogramaEsperanzaDeLaLongitud.m}
-\bigskip
 
 \subsubsection{rand()}
 
@@ -396,5 +455,31 @@ Esta función de redondeo utiliza el algoritmo \textit{Mersenne Twister}\footnot
 \subsubsection{ceil(n)}
 
 Esta función de \textit{GNU Octave} devuelve el primer número entero no menor al número \textit{n}.
-\end{document}
 
+
+\subsubsection{probNum(n,vector)}
+
+Este algoritmo (\refcode{code:punto8}) cuenta la cantidad de apariciones de un número 'n' en el 'vector', y luego lo divide por el largo del vector. Si suponemos que esos números en el vector son elegidos aleatoriamente, entonces lo que devuelve la función es la probabilidad de aparición de n.
+
+% Código
+\lstinputlisting[label=code:punto8,caption=probNum.m]{source/probNum.m}
+
+
+\subsubsection{histogramaDeLaEsperanzaDeLaLongitud(listaDeSecuencias)}
+
+Esta función (\refcode{code:punto9}) grafica los valores de la longitud de la secuencias que hay en la 'listaDeSecuencias'. Además grafica la esperanza de la longitud.
+
+% Código
+\lstinputlisting[label=code:punto9,caption=histogramaEsperanzaDeLaLongitud.m]{source/histogramaEsperanzaDeLaLongitud.m}
+
+
+\subsubsection{probDeLaLongitud(longitud,listaDeSecuencias)}
+
+Esta función (\refcode{code:punto10}) calcula la probabilidad de la longitud de una secuencia ubicada dentro de una lista de secuencias.
+
+% Código
+\lstinputlisting[label=code:punto10,caption=probDeLaLongitud.m]{source/probDeLaLongitud.m}
+\bigskip
+
+
+\end{document}
