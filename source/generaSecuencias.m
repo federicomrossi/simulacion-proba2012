@@ -28,8 +28,8 @@ function y = generaSecuencias(n,m)
 		
 		endwhile
 	
-		#La secuenca al listado. 	
-		listaDeSecuencias{i} = listaPorCorrida;ia es agregad
+		#Agrega la secuencia al listado. 	
+		listaDeSecuencias{i} = listaPorCorrida;
 	
 	endfor
 	
