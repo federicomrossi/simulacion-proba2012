@@ -164,12 +164,13 @@ Pondremos a prueba ahora lo visto en el apartado anterior estimando las probabil
 \indent octave:8> prob1 + prob2 + prob3 + prob4 + prob5 + prob6\\
 \indent ans =  1\\}
 
-Se puede ver que las probabilidades de que salga cada número, no son exactamente las esperadas, pero se acercan a este valor. Téngase en cuenta que cuanto mayor es el número de ejecuciones, las probabilidades se van acercando más al valor calculado teóricamente. 
+Se puede ver que las probabilidades de que salga cada número, no son exactamente las esperadas, pero se acercan a este valor. Téngase en cuenta que cuanto mayor es el número de ejecuciones, las probabilidades se van acercando más al valor calculado teóricamente. \\
+En el siguiente diagrama se puede ver como la cantidad de apariciones de los valores del dado  para 1000 tiradas se distribuye entre todos los valores. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.60\textwidth]{images/probabilidadesDados.png}
-	\caption{Cantidad de veces que sale cada valor\\ de un dado en 1000 lanzamientos de este.}
+	\caption{Cantidad de veces que sale cada valor de un dado en 1000 lanzamientos de este.}
 \end{figure}
 \bigskip
 
@@ -303,8 +304,12 @@ Teniendo los dos resultados de las probabilidades a la vista, es claro ver el po
 
 % ACTIVIDAD PRINCIPAL - 
 \subsection{Algoritmo generador de secuencias}
-[Hacer]
 
+El algotimo propuesto que cumple con lo previamente explicado es el siguiente:
+
+% Código
+\lstinputlisting[label=code:genSec,caption=generaSecuencias.m]{source/generaSecuencias.m}
+\bigskip
 
 % ACTIVIDAD PRINCIPAL - 
 \subsection{Análisis del algoritmo}
@@ -314,12 +319,36 @@ Teniendo los dos resultados de las probabilidades a la vista, es claro ver el po
 $\mathbb{E}(\textit{L}) = \sum\limits_{i=1}^n l_{i} \mathbb{P}_{i}(l_{i}) $
 
 \bigskip
-\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Entonces se puede simplificar la fórmula a:\\
+\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Ya que vimos que los números generados son equiprobables, entonces las longitudes de las secuencias tambien, y por lo tanto tienen probabilidad $1 \over \textir{n}$, y se puede simplificar la fórmula a:\\
 
 \indent $\mathbb{E}(\textit{L}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,
 
 \bigskip
-\noindent que es lo mismo que se calcula en el algoritmo anterior, o sea, la suma de las longitudes dividido la cantidad de secuencias.
-	
+\noindent que es lo mismo, la suma de las longitudes dividido la cantidad de secuencias. Esta cuenta es la reproducida por el algoritmo:\\
+
+% Código
+\lstinputlisting[label=code:esperanza,caption=esperanzaDeLaLongitud.m]{source/esperanzaDeLaLongitud.m}
+\bigskip
+
+\bigskip Para M = 10 y N = 1000, el resultado fue el siguiente:\\
+
+{\ttfamily\footnotesize
+\indent octave:1> listaDeSecuencias = generaSecuencias(1000,10);\\
+\indent octave:2> esperanzaDeLaLongitud(listaDeSecuencias)\\
+\indent ans =  29.407\\}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.60\textwidth]{images/longitudes.png}
+	\caption{Longitudes de las secuencias.}
+\end{figure}
+\bigskip
+
+En el grafico se puede apreciar que los valores de las longitudes de las secuencias son cercanos a la recta de la esperanza (marcada en rojo). Por lo tanto, podemos decir que el resultado del grafico concuerda con lo calculado. 
+
+% APENDICE -
+\section{Apéndice}
+\subsection{Algoritmos relevantes}
+\subsubsection{probNum()}
 \end{document}
 

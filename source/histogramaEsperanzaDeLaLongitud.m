@@ -13,10 +13,17 @@ function histogramaEsperanzaDeLaLongitud(listaDeSecuencias)
 	endfor
 	
 	
-	x=[0:1000];
+	x=1:1000;
 	y= esperanzaDeLaLongitud(listaDeSecuencias);
 	
+	function z = f_const(x,y)
+	z = y;
+	endfunction
+	
 	colormap (summer (64));
-	plot(1:1000,largosSecuencias,x,y)
+	plot(x,largosSecuencias,".","markersize",5,x,f_const(x,y),"@1.","markersize",5);
+	xlabel("Secuencias generadas","fontsize",14);
+ 	ylabel("Longitud de cada secuencia","fontsize",14);
+
 	
 endfunction
