@@ -3,8 +3,6 @@
 # PRE: Debe pasarse por parametro 'n', que es la cantidad de tiradas a simular, utilizando la funcion
 #randomDado()
 # POST: Se devuelve la probabilidad.
-
-
 function y = probDobleDelOtro(n)
 	
 	#Se simulan las n tiradas de dos dados.
@@ -20,6 +18,7 @@ function y = probDobleDelOtro(n)
 			salioDobleDelOtro = salioDobleDelOtro + 1;
 		endif	
 	endfor
+    
     	#Se devuelve favorables/posibles.
 	y = salioDobleDelOtro/n;
 	

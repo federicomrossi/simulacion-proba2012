@@ -138,7 +138,7 @@ Por lo explicado anteriormente, es evidente que como a cada valor se lo trató d
 	Habiendo conseguido valores aleatorios entre 1 y 6 mediante el procedimiento antes mencionado, ahora deseamos obtener valores aleatorios entre dos números enteros genéricos, o sea, a partir de un intervalo cualquiera. El problema radica ahora en que si ninguno de los extremos es el 0, los valores no caen dentro del intervalo esperado y, por ende, habría que desplazar el intervalo. Por lo tanto, una forma de conseguir números enteros aleatorios en un intervalo genérico es, primero, calcular los números aleatorios entre 0 y la longitud del intervalo requerido más uno (porque se redondea para arriba). Luego, hay que sumarle el extremo inferior menos uno, obteniendo así números enteros aleatorios dentro del intervalo esperado. Este método es el utilizado en el algoritmo del \refcode{code:punto1.2}.
 
 % Código
-\lstinputlisting[label=code:punto1.2,caption=randomDado.m]{source/randomGenerico.m}
+\lstinputlisting[label=code:punto1.2,caption=randomGenerico.m]{source/randomGenerico.m}
 \bigskip
 
 
@@ -305,10 +305,10 @@ Teniendo los dos resultados de las probabilidades a la vista, es claro ver el po
 % ACTIVIDAD PRINCIPAL - 
 \subsection{Algoritmo generador de secuencias}
 
-El algotimo propuesto que cumple con lo previamente explicado es el siguiente:
+En el \refcode{code:punto5} se puede observar el algoritmo que simula la situación antes mencionada. Este es capaz de simular muchas veces las secuencias de entradas descritas, siendo posible la especificación la cantidad de entradas posibles (\textit{M}) y la cantidad de secuencias a generar (\textit{N}).
 
 % Código
-\lstinputlisting[label=code:genSec,caption=generaSecuencias.m]{source/generaSecuencias.m}
+\lstinputlisting[label=code:punto5,caption=generaSecuencias.m]{source/generaSecuencias.m}
 \bigskip
 
 % ACTIVIDAD PRINCIPAL - 
@@ -319,32 +319,37 @@ El algotimo propuesto que cumple con lo previamente explicado es el siguiente:
 $\mathbb{E}(\textit{L}) = \sum\limits_{i=1}^n l_{i} \mathbb{P}_{i}(l_{i}) $
 
 \bigskip
-\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Ya que vimos que los números generados son equiprobables, entonces las longitudes de las secuencias tambien, y por lo tanto tienen probabilidad $1 \over \textir{n}$, y se puede simplificar la fórmula a:\\
+\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Ya que vimos que los números generados son equiprobables, entonces las longitudes de las secuencias tambien, y por lo tanto tienen probabilidad $1 \over n$, y se puede simplificar la fórmula a:\\
 
 \indent $\mathbb{E}(\textit{L}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,
 
 \bigskip
-\noindent que es lo mismo, la suma de las longitudes dividido la cantidad de secuencias. Esta cuenta es la reproducida por el algoritmo:\\
+\noindent que es lo mismo, la suma de las longitudes dividido la cantidad de secuencias. 
+	\par
+	Este cálculo puede ser resuelto mediante el algoritmo mostrado en el \refcode{code:punto6}, el cual suma las longitudes de las secuencias contenidas en una lista (vector) pasado por parámetro a la función y luego divide el resultado de la suma por la cantidad total de secuencias albergadas en la lista, devolviéndonos la media buscada de la variable aleatoria \textit{L}.\medskip
 
 % Código
-\lstinputlisting[label=code:esperanza,caption=esperanzaDeLaLongitud.m]{source/esperanzaDeLaLongitud.m}
+\lstinputlisting[label=code:punto6,caption=esperanzaDeLaLongitud.m]{source/esperanzaDeLaLongitud.m}
 \bigskip
 
-\bigskip Para M = 10 y N = 1000, el resultado fue el siguiente:\\
+\bigskip 
+\noindent Para el caso de \textit{M = 10} y \textit{N = 1000}, el resultado obtenido fue el siguiente:\\
 
 {\ttfamily\footnotesize
 \indent octave:1> listaDeSecuencias = generaSecuencias(1000,10);\\
 \indent octave:2> esperanzaDeLaLongitud(listaDeSecuencias)\\
-\indent ans =  29.407\\}
+\indent ans =  29.407}
+
+\medskip
+En la \textit{Figura 2} se muestra un gráfico de las longitudes de las secuencias, en el que se puede apreciar que los valores de las longitudes son cercanos a la recta de la esperanza (marcada en rojo). Por lo tanto, podemos decir que el resultado del grafico concuerda con lo calculado. \\
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.60\textwidth]{images/longitudes.png}
+	\includegraphics[width=0.80\textwidth]{images/longitudes.png}
 	\caption{Longitudes de las secuencias.}
 \end{figure}
 \bigskip
 
-En el grafico se puede apreciar que los valores de las longitudes de las secuencias son cercanos a la recta de la esperanza (marcada en rojo). Por lo tanto, podemos decir que el resultado del grafico concuerda con lo calculado. 
 
 % APENDICE -
 \section{Apéndice}

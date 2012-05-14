@@ -2,8 +2,6 @@
 # PRE: 'n' es la cantidad de numeros aleatorios requeridos, 'piso' y 'techo' son los 
 # extremos del intervalo(incluidos).
 # POST: se devuelve un vector de longitud n con los valores obtenidos.
-
-
 function listaDeValores = randomGenerico(piso,techo,n)
 	
 	#Consigo numeros aleatorios entre 0 y la long del intervalo.

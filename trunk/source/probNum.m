@@ -2,8 +2,6 @@
 # PRE: Debe pasarse por parametro  el numero 'num', que es el numero del que se 
 # quiere calcular la probabilidad, y el 'vector' de numeros.
 # POST: Se devuelve la probabilidad.
-
-
 function y = probNum(num,vector)
 	
 	cantApariciones = 0;
@@ -14,6 +12,7 @@ function y = probNum(num,vector)
 			cantApariciones = cantApariciones+1;
 		endif
 	endfor
+    
 	#Se devuelve favorables/posibles.
 	y = cantApariciones/length(vector);
 	
