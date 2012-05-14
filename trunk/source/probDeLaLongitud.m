@@ -13,8 +13,8 @@ function y = probDeLaLongitud(longitud,listaDeSecuencias)
 	for i = 1:cantDeSecuencias
 		if  (longitud == length(listaDeSecuencias{i}))
 			cantApariciones = cantApariciones + 1;
-	endfor
-    
+		endif
+    	endfor
 	y = cantApariciones/cantDeSecuencias;
 	
 endfunction
