@@ -1,7 +1,5 @@
 # Funcion que genera un histograma de los largos de las secuencias.
 # PRE: Debe pasarse por parametro la listaDeSecuencias.
-
-
 function histogramaEsperanzaDeLaLongitud(listaDeSecuencias)
 	
 	cantDeSecuencias = length(listaDeSecuencias);
