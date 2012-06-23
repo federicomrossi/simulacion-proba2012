@@ -11,8 +11,6 @@ function listaDeValores = randomGenerico(piso,techo,n)
 	enteros = ceil(valores);
 	
 	#Desplazo los valores para que esten dentro del intervalo pedido.
-	listaDeValores = i + piso -1;
+	listaDeValores = enteros + piso -1;
 
 endfunction
-
-
