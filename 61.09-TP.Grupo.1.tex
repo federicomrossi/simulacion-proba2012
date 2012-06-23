@@ -77,6 +77,8 @@
 
 %% FIGURAS
 \captionsetup[figure]{labelfont=bf,textfont=it}
+%% TABLAS
+\captionsetup[table]{labelfont=bf,textfont=it}
 
 % COMANDOS
 
@@ -84,6 +86,8 @@
 \renewcommand{\lstlistingname}{Código}
 %% Titulo de las figuras
 \renewcommand{\figurename}{Figura}
+%% Titulo de las tablas
+\renewcommand{\tablename}{Tabla}
 %% Referencia a los códigos
 \newcommand{\refcode}[1]{\textit{Código \ref{#1}}}
 %% Referencia a las imagenes
@@ -312,22 +316,26 @@ En el \refcode{code:punto5} se puede observar el algoritmo que simula la situaci
 \lstinputlisting[label=code:punto5,caption=generaSecuencias.m]{source/generaSecuencias.m}
 \bigskip
 
+
+
 % ACTIVIDAD PRINCIPAL - Análisis del algoritmo
 \subsection{Análisis del algoritmo}
 
-	Si se asume que \textit{L} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es:\\
+	Si se asume que \textit{L} es una variable aleatoria, entonces el método para calcular el valor de longitud esperado, o la longitud media, se extrae del cálculo de la esperanza para una variable aleatoria discreta. Esto es\\
 	 
 $\mathbb{E}(\textit{L}) = \sum\limits_{i=1}^n l_{i} \mathbb{P}(l_{i}) $
 
 \bigskip
-\noindent con \textit{n} la cantidad de secuencias, y siendo \textit{$l_i$} la longitud de la secuencia \textit{i} y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Ya que vimos que los números generados son equiprobables, entonces las longitudes de las secuencias tambien, y por lo tanto tienen probabilidad $1 \over n$, y se puede simplificar la fórmula a:\\
+\noindent siendo \textit{n} la cantidad de secuencias, \textit{$l_i$} la longitud de la \textit{i-ésima} secuencia y \textit{$\mathbb{P}(l_i)$} la probabilidad de \textit{$l_i$}. Ya que vimos que los números generados son equiprobables, entonces las longitudes de las secuencias tambien, y por lo tanto tienen probabilidad $1 \over n$, y se puede simplificar la fórmula a:\\
 
-\indent $\mathbb{E}(\textit{L}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,
+$\mathbb{E}(\textit{L}) = {1 \over n} \sum\limits_{i=1}^n l_{i} $,
 
 \bigskip
-\noindent que es lo mismo, la suma de las longitudes dividido la cantidad de secuencias. 
+\noindent que es lo mismo, la suma de las longitudes dividido la cantidad de secuencias. Lo hasta aquí expuesto no es mas que la fórmula teórica para el cálculo de la esperanza de \textit{L}.
 	\par
-	Este cálculo puede ser resuelto mediante el algoritmo mostrado en el \refcode{code:punto6}, el cual suma las longitudes de las secuencias contenidas en una lista (vector) pasado por parámetro a la función y luego divide el resultado de la suma por la cantidad total de secuencias albergadas en la lista, devolviéndonos la media buscada de la variable aleatoria \textit{L}.\medskip
+	Ahora, enfocándonos en un análisis estadístico de la longitud de las secuencias, podemos considerar un método visual para lograr estimar de forma aproximada el intervalo en el cual se encontrará la media de la longitud. Para esto debemos juntar un número de muestras considerable de longitudes de secuencias de manera tal de poder conseguir una mayor exactitud en la visualización de resultados. Estos valores los debemos volcar en un gráfico en el cual podremos ver que el área mas densa de puntos es aquella en donde existirá el valor real de la media de la longitud. Notar que no podremos dar a conocer un valor exacto, pero si podremos establecer un intervalo de longitudes en el cual existe dicha esperanza. Además, cabe resaltar que cuanto menor sea el área donde se concentra mayor densidad, menor será el intervalo y mas próximos estaremos del valor esperado de \textit{L}.
+	\par
+	El cálculo de la media puede ser resuelto mediante el algoritmo mostrado en el \refcode{code:punto6}, el cual suma las longitudes de las secuencias contenidas en una lista (vector) pasado por parámetro a la función y luego divide el resultado de la suma por la cantidad total de secuencias albergadas en la lista, devolviéndonos la media buscada de la variable aleatoria \textit{L}.\medskip
 
 % Código
 \lstinputlisting[label=code:punto6,caption=esperanzaDeLaLongitud.m]{source/esperanzaDeLaLongitud.m}
@@ -366,76 +374,135 @@ Deseamos ahora estimar las probabilidades de los distintos valores posibles de \
 \bigskip
 
 
-\noindent Para una estimación hecha se han obtenido los siguientes valores de longitudes y probabilidades respectivas:\\
+\noindent Para una cierta estimación se han obtenido valores de longitudes y sus respectivas probabilidades, las cuales son mostradas en el \textit{Cuadro 1}. Además, se han graficado dichos valores en la \textit{Figura 3} de manera de poder observar visualmente los resultados.
 
-{\ttfamily\footnotesize
-\indent octave:15> listaDeSecuencias = generaSecuencias(1000,10);\\
-\indent octave:16> probDeTodasLasLongitudes(listaDeSecuencias)\\
-\indent ans =\\
 
-\indent    3.9000e+01   2.2000e-02\\
-\indent    3.5000e+01   2.6000e-02\\
-\indent    1.5000e+01   1.5000e-02\\
-\indent    5.7000e+01   5.0000e-03\\
-\indent    3.4000e+01   1.9000e-02\\
-\indent    2.0000e+01   3.9000e-02\\
-\indent    2.4000e+01   3.4000e-02\\
-\indent    1.9000e+01   3.6000e-02\\
-\indent    3.2000e+01   2.7000e-02\\
-\indent    1.3000e+01   9.0000e-03\\
-\indent    2.9000e+01   3.0000e-02\\
-\indent    4.6000e+01   7.0000e-03\\
-\indent    1.8000e+01   3.7000e-02\\
-\indent    2.7000e+01   5.2000e-02\\
-\indent    2.6000e+01   4.7000e-02\\
-\indent    3.3000e+01   1.5000e-02\\
-\indent    5.1000e+01   3.0000e-03\\
-\indent    2.5000e+01   4.6000e-02\\
-\indent    1.6000e+01   2.4000e-02\\
-\indent    5.4000e+01   5.0000e-03\\
-\indent    3.0000e+01   3.9000e-02\\
-\indent    2.2000e+01   5.2000e-02\\
-\indent    3.8000e+01   1.8000e-02\\
-\indent    2.3000e+01   5.3000e-02\\
-\indent    3.1000e+01   3.3000e-02\\
-\indent    4.0000e+01   1.5000e-02\\
-\indent    6.9000e+01   3.0000e-03\\
-\indent    1.7000e+01   3.4000e-02\\
-\indent    4.8000e+01   1.4000e-02\\
-\indent    2.8000e+01   2.8000e-02\\
-\indent    3.6000e+01   2.6000e-02\\
-\indent    7.2000e+01   2.0000e-03\\
-\indent    2.1000e+01   3.1000e-02\\
-\indent    5.5000e+01   5.0000e-03\\
-\indent    1.1000e+01   4.0000e-03\\
-\indent    5.8000e+01   4.0000e-03\\
-\indent    1.2000e+01   8.0000e-03\\
-\indent    4.3000e+01   1.1000e-02\\
-\indent    3.7000e+01   1.7000e-02\\
-\indent    7.9000e+01   1.0000e-03\\
-\indent    4.1000e+01   8.0000e-03\\
-\indent    6.2000e+01   2.0000e-03\\
-\indent    4.2000e+01   1.2000e-02\\
-\indent    4.5000e+01   9.0000e-03\\
-\indent    4.7000e+01   8.0000e-03\\
-\indent    5.3000e+01   6.0000e-03\\
-\indent    4.4000e+01   1.1000e-02\\
-\indent    1.4000e+01   1.4000e-02\\
-\indent    5.0000e+01   8.0000e-03\\
-\indent    6.0000e+01   4.0000e-03\\
-\indent    5.6000e+01   5.0000e-03\\
-\indent    5.2000e+01   3.0000e-03\\
-\indent    6.4000e+01   2.0000e-03\\
-\indent    4.9000e+01   1.0000e-03\\
-\indent    6.5000e+01   3.0000e-03\\
-\indent    6.3000e+01   1.0000e-03\\
-\indent    7.0000e+01   2.0000e-03\\
-\indent    6.8000e+01   1.0000e-03\\
-\indent    7.5000e+01   1.0000e-03\\
-\indent    6.6000e+01   1.0000e-03\\
-\indent    5.9000e+01   1.0000e-03\\
-\indent    7.1000e+01   1.0000e-03\\
-}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.80\textwidth]{images/longitud-vs-probabilidad.png}
+	\caption{Gráfico de $\mathbb{P}(\textit{L})$ vs. \textit{L}}
+\end{figure}
+\bigskip
+
+
+\begin{table}[!hbt]
+	\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\rowcolor[gray]{0.9}\textbf{Longitud (\textit{L})} & \textbf{Probabilidad ($\mathbb{P}(\textit{L})$)} \\
+		\hline
+		28 & 0.037 \\
+		\hline
+		41 & 0.013 \\
+		\hline
+		19 & 0.031 \\
+		\hline
+		37 & 0.02 \\
+		\hline
+		26 & 0.046 \\
+		\hline
+		20 & 0.036 \\
+		\hline
+		27 & 0.053 \\
+		\hline
+		16 & 0.033 \\
+		\hline
+		17 & 0.04 \\
+		\hline
+		64 & 0.001 \\
+		\hline
+		38 & 0.015 \\
+		\hline
+		34 & 0.033 \\
+		\hline
+		31 & 0.035 \\
+		\hline
+		42 & 0.014 \\
+		\hline
+		24 & 0.053 \\
+		\hline
+		30 & 0.043 \\
+		\hline
+		50 & 0.004 \\
+		\hline
+		35 & 0.024 \\
+		\hline
+		48 & 0.004 \\
+		\hline
+		14 & 0.011 \\
+		\hline
+		22 & 0.043 \\
+		\hline
+		18 & 0.032 \\
+		\hline
+		21 & 0.038 \\
+		\hline
+		40 & 0.022 \\
+		\hline
+		25 & 0.042 \\
+		\hline
+		36 & 0.02 \\
+		\hline
+		32 & 0.035 \\
+		\hline
+		44 & 0.008 \\
+		\hline
+		43 & 0.012 \\
+		\hline
+		54 & 0.003 \\
+		\hline
+		46 & 0.01 \\
+		\hline
+		13 & 0.007 \\
+		\hline
+		63 & 0.002 \\
+		\hline
+		12 & 0.003 \\
+		\hline
+		62 & 0.003 \\
+		\hline
+		15 & 0.017 \\
+		\hline
+		52 & 0.004 \\
+		\hline
+		49 & 0.005 \\
+		\hline
+		74 & 0.001 \\
+		\hline
+		73 & 0.001 \\
+		\hline
+		57 & 0.002 \\
+		\hline
+		61 & 0.001 \\
+		\hline
+		45 & 0.006 \\
+		\hline
+		56 & 0.002 \\
+		\hline
+		47 & 0.006 \\
+		\hline
+		51 & 0.003 \\
+		\hline
+		60 & 0.001 \\
+		\hline
+		53 & 0.002 \\
+		\hline
+		67 & 0.001 \\
+		\hline
+		98 & 0.001 \\
+		\hline
+		81 & 0.001 \\
+		\hline
+		71 & 0.001 \\
+		\hline
+		59 & 0.001 \\
+		\hline
+	\end{tabular}
+	\caption{Tabla de longitudes y sus respectivas probabilidades.}
+	\end{center}
+\end{table}
+\bigskip
+
 
 
 
