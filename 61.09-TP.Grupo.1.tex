@@ -268,15 +268,15 @@ En este resultado se puede observar que las probabilidades de obtener al menos u
 \indent \textit{B: ``Obtener al menos un As en 4 tiradas''}\\
 \indent \textit{$\bar{B}$: ``No Obtener ningún As en 4 tiradas''}\\
 
-$\mathbb{P}(B) = 1 - \mathbb{P}(\bar{B}) = 1- ({5 \over 6} {5 \over 6})^4 = 1- ({5 \over 6})^8 \thickapprox 0.76743$\\\bigskip
+$\mathbb{P}(B) = 1 - \mathbb{P}(\bar{B}) = 1- ({5 \over 6})^4 = \thickapprox 0.51775$\\\bigskip
 
-\noindent Como se puede observar, la probabilidad de no obtener ningún As en una tirada es igual a la multiplicación de las probabilidades de no obtener As en la tirada de un solo dado. Esto se debe a que estos eventos son independientes entre sí, lo que nos posibilita hacer el cálculo de esa forma. Además, como el lanzamiento de dos dados en reiteradas ocaciones son independientes entre sí, entonces podemos hacer el cálculo para 4 tiradas de la misma manera que como lo hemos hecho para dos dados. Para constatar los cálculos empíricamente presentamos el \refcode{code:punto4.2} que simula dicha situación. Con este hemos obtenido que, para un número de repeticiones \mbox{\textit{n = 1000000}}, $\mathbb{P}(B) = 0.76781$, el cual es un valor bastante aproximado a lo obtenido analíticamente.
+\noindent Como se puede observar, la probabilidad de no obtener ningún As en una tirada es igual a la multiplicación de las probabilidades de no obtener As en la tirada de un dado. Esto se debe a que estos eventos son independientes entre sí, lo que nos posibilita hacer el cálculo de esa forma. Para constatar los cálculos empíricamente presentamos el \refcode{code:punto4.2} que simula dicha situación. Con este hemos obtenido que, para un número de repeticiones \mbox{\textit{n = 1000000}}, $\mathbb{P}(B) = 0.51759$, el cual es un valor bastante aproximado a lo obtenido analíticamente.
 
 % Código
 \lstinputlisting[label=code:punto4.2,caption=probAsEn4Tiradas.m]{source/probAsEn4Tiradas.m}
 \bigskip
 
-Teniendo los dos resultados de las probabilidades a la vista, es claro ver el por qué de que el Caballero de Méré suela perder cuando apuesta a que va a obtener al menos un doble As en 24 tiradas de dos dados y que suela ganar cuando apuesta a que va a obtener al menos un As en 4 tirada, ya que la probabilidad del primer caso es mas baja que la del segundo caso. De todas formas, se puede observar que ambas probabilidades son altas, por lo que las probabilidades de ganar cada vez que apuesta en ambas situaciones se inclinan en general a su favor.
+Teniendo los dos resultados de las probabilidades a la vista, no es claro ver el por qué de que el Caballero de Méré suela perder cuando apuesta a que va a obtener al menos un doble As en 24 tiradas de dos dados y que suela ganar cuando apuesta a que va a obtener al menos un As en 4 tirada, ya que las probabilidades de ambos casos  son parecidas. De todas formas, estos números son viables para una cantidad de repeticiones alta, por lo que para pocas experiencias, podría ser que pierda más veces de las que gane.
 \bigskip
 
 
