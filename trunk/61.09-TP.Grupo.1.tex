@@ -270,13 +270,14 @@ En este resultado se puede observar que las probabilidades de obtener al menos u
 
 $\mathbb{P}(B) = 1 - \mathbb{P}(\bar{B}) = 1- ({5 \over 6})^4 = \thickapprox 0.51775$\\\bigskip
 
-\noindent Como se puede observar, la probabilidad de no obtener ningún As en una tirada es igual a la multiplicación de las probabilidades de no obtener As en la tirada de un dado. Esto se debe a que estos eventos son independientes entre sí, lo que nos posibilita hacer el cálculo de esa forma. Para constatar los cálculos empíricamente presentamos el \refcode{code:punto4.2} que simula dicha situación. Con este hemos obtenido que, para un número de repeticiones \mbox{\textit{n = 1000000}}, $\mathbb{P}(B) = 0.51759$, el cual es un valor bastante aproximado a lo obtenido analíticamente.
+	Para constatar los cálculos empíricamente presentamos el \refcode{code:punto4.2} el cual simula dicha situación. Con este hemos obtenido que, para un número de repeticiones \mbox{\textit{n = 1000000}}, $\mathbb{P}(B) = 0.51759$, el cual es un valor bastante aproximado a lo obtenido analíticamente.
 
+\newpage
 % Código
 \lstinputlisting[label=code:punto4.2,caption=probAsEn4Tiradas.m]{source/probAsEn4Tiradas.m}
-\bigskip
+\bigskip\bigskip
 
-Teniendo los dos resultados de las probabilidades a la vista, no es claro ver el por qué de que el Caballero de Méré suela perder cuando apuesta a que va a obtener al menos un doble As en 24 tiradas de dos dados y que suela ganar cuando apuesta a que va a obtener al menos un As en 4 tirada, ya que las probabilidades de ambos casos  son parecidas. De todas formas, estos números son viables para una cantidad de repeticiones alta, por lo que para pocas experiencias, podría ser que pierda más veces de las que gane.
+Teniendo los dos resultados de las probabilidades a la vista, no es claro ver el por qué de que el Caballero de Méré suela perder cuando apuesta a que va a obtener al menos un doble As en 24 tiradas de dos dados y que suela ganar cuando apuesta a que va a obtener al menos un As en 4 tirada, ya que las probabilidades de ambos casos  son parecidas. De todas formas, estos números son viables para una cantidad de repeticiones alta, por lo que para pocas experiencias, podría ser que pierda más veces de las que gane, es decir, las probabilidades dejen de ser aproximadas para tener diferencias considerables entre ellas.
 \bigskip
 
 
