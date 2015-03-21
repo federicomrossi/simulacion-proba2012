@@ -1,0 +1,1 @@
+Tp simulación variables aleatorias
